@@ -31,9 +31,8 @@ async function Server() {
 
         app.post('/ratings', async(req, res)=> {
 
-            const {reviews} = req.body
-            const ratingsModel = await ratingSchema.create({ratings: reviews})
-
+            const {ratings} = req.body
+            const ratingsModel = await ratingSchema.create({ratings})
             res.json({message: "sbumitted", data: ratingsModel});
 
 
