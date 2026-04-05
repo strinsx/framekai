@@ -33,12 +33,10 @@ async function Server() {
 
             const reviews = req.body
             const ratingsModel = await ratingSchema.create({
-                reviews
+                reviews,
             })
 
-            console.log('Submitted', reviews);
-
-
+            res.json({message: submitted})
 
         })
 

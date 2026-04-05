@@ -10,7 +10,7 @@ function Backdrop() {
     const [watchLater, setWatchLater] = useState([]);
 
     const fetchData = async () => {
-        const response = await fetch('http://localhost:3000/spotlight');
+        const response = await fetch('https://framekai.onrender.com/spotlight');
         const data = await response.json();
         console.log(data[0]);
 

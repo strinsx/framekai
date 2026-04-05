@@ -18,7 +18,7 @@ function Review() {
         setSubmit(submit + 1);
         localStorage.setItem("isSubmit", true)
 
-        const response = await fetch('http://localhost:3000/ratings', {
+        const response = await fetch('https://framekai.onrender.com/ratings', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
