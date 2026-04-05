@@ -31,15 +31,15 @@ async function Server() {
 
         app.post('/ratings', async(req, res)=> {
 
-            const reviews = req.body
-            const ratingsModel = await ratingSchema.create({
-                reviews,
-            })
+            const {reviews} = req.body
+            const ratingsModel = await ratingSchema.create({ratings: reviews})
 
-            res.json({message: submitted})
+            res.json({message: "sbumitted", data: ratingsModel});
+
 
         })
 
+       
 
         app.listen(PORT, () => {
             console.log("LISTENING IN PORT", PORT);
