@@ -29,6 +29,21 @@ async function Server() {
             }
         })
 
+
+        app.get('/new-releases', async(req, res)=> {
+            try {
+
+                const response = await fetch(`${PROXYURI}/animekai/new-releases`);
+                const data = await response.json();
+                res.json(data.results);
+                
+            } catch (error) {
+
+                res.status(400).json({error: "cannot fetch"})
+                
+            }
+        })
+
         app.post('/ratings', async(req, res)=> {
 
             const {ratings} = req.body
