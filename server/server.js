@@ -33,7 +33,9 @@ async function Server() {
 
             const {ratings} = req.body
             const ratingsModel = await ratingSchema.create({ratings})
-            res.json({message: "sbumitted", data: ratingsModel});
+            
+            const ids = await ratingSchema.find().select('_id');
+            res.json(ids);
 
 
         })

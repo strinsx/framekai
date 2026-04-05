@@ -11,6 +11,21 @@ function Review() {
     const [hovered, setHovered] = useState(false);
     const [submit, setSubmit] = useState(0);
     const check = localStorage.getItem('isSubmit');
+
+    const fetchSubmit = async()=> {
+
+        const response = await fetch('https://framekai.onrender.com/ratings', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+
+        const data = await response.json();
+        console.log(data)
+
+
+    }
  
     const submitRatings = async()=> {
 
@@ -29,7 +44,6 @@ function Review() {
         })
 
         const data = await response.json();
-        console.log(data.data);
 
     }
 
@@ -37,6 +51,8 @@ function Review() {
 
         const isSubmit = localStorage.getItem('isSubmit');
         setHovered(isSubmit);
+        fetchSubmit();
+        
 
     },[])
  
