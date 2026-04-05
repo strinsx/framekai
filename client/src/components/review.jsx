@@ -10,19 +10,20 @@ function Review() {
 
     const [hovered, setHovered] = useState(false);
     const [submit, setSubmit] = useState(0);
+    const [view, setView] = useState(0);
     const check = localStorage.getItem('isSubmit');
 
     const fetchSubmit = async()=> {
 
         const response = await fetch('https://framekai.onrender.com/ratings', {
-            method: 'POST',
+            method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
             },
         })
 
         const data = await response.json();
-        console.log(data)
+        setView(data.length);
 
 
     }
@@ -30,7 +31,7 @@ function Review() {
     const submitRatings = async()=> {
 
         setHovered(true);
-        setSubmit(submit + 1);
+        setSubmit(1);
         localStorage.setItem("isSubmit", true)
 
         const response = await fetch('https://framekai.onrender.com/ratings', {
@@ -47,13 +48,13 @@ function Review() {
 
     }
 
+
+
     useEffect(()=> {
 
         const isSubmit = localStorage.getItem('isSubmit');
         setHovered(isSubmit);
         fetchSubmit();
-        
-
     },[])
  
 
@@ -68,7 +69,7 @@ function Review() {
 
             <div className='flex gap-2 items-center '>
                 <FontAwesomeIcon icon={hovered ? solidHeart : regularHeart} onClick={()=> submitRatings()} onMouseEnter={()=> setHovered(true)} onMouseLeave={()=> setHovered(false)} className='text-2xl hover:text-red-500 cursor-pointer'></FontAwesomeIcon>
-                <h1 className='font-heading'>{submit}</h1>
+                <h1 className='font-heading'>{view}</h1>
             </div>
 
         </div>

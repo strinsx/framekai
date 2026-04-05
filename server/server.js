@@ -34,10 +34,13 @@ async function Server() {
             const {ratings} = req.body
             const ratingsModel = await ratingSchema.create({ratings})
             
+
+
+        })
+
+        app.get('/reviews', async(req, res)=> {
             const ids = await ratingSchema.find().select('_id');
-            res.json(ids);
-
-
+            res.json({data: ids});
         })
 
        
