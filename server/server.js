@@ -15,7 +15,7 @@ async function Server() {
         app.use(cors());
         app.use(express.json());
         await DB();
-      
+
 
 
         app.get('/spotlight', async (req, res) => {
@@ -25,40 +25,74 @@ async function Server() {
                 const data = await response.json();
                 res.json(data.results);
             } catch (error) {
-                res.status(400).json({error: "no data"})
+                res.status(400).json({ error: "no data" })
             }
         })
 
 
-        app.get('/new-releases', async(req, res)=> {
+        app.get('/new-releases', async (req, res) => {
             try {
 
                 const response = await fetch(`${PROXYURI}/animekai/new-releases`);
                 const data = await response.json();
                 res.json(data.results);
-                
+
             } catch (error) {
 
-                res.status(400).json({error: "cannot fetch"})
-                
+                res.status(400).json({ error: "cannot fetch" })
+
             }
         })
 
-        app.post('/ratings', async(req, res)=> {
+        app.post('/ratings', async (req, res) => {
 
-            const {ratings} = req.body
-            const ratingsModel = await ratingSchema.create({ratings})
-            
+            const { ratings } = req.body
+            const ratingsModel = await ratingSchema.create({ ratings })
+
 
 
         })
 
-        app.get('/reviews', async(req, res)=> {
+        app.get('/reviews', async (req, res) => {
             const ids = await ratingSchema.find().select('_id');
-            res.json({data: ids});
+            res.json({ data: ids });
         })
 
-       
+
+        app.get('/latest-complete', async (req, res) => {
+
+            try {
+
+                const response = await fetch(`${PROXYURI}/animekai/latest-completed`);
+                const data = await response.json();
+                res.json(data.results);
+
+            } catch (error) {
+
+                res.status(400).json({ error: "cannot fetch" })
+
+            }
+
+        })
+
+
+         app.get('/movies', async (req, res) => {
+
+            try {
+
+                const response = await fetch(`${PROXYURI}/animekai/movies`);
+                const data = await response.json();
+                res.json(data.results);
+
+            } catch (error) {
+
+                res.status(400).json({ error: "cannot fetch" })
+
+            }
+
+        })
+
+
 
         app.listen(PORT, () => {
             console.log("LISTENING IN PORT", PORT);
