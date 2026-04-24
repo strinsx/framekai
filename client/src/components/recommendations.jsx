@@ -1,28 +1,17 @@
-import { useEffect, useState } from "react";
 
 
+function Recommendations(animData = []) {
 
-function Gridpages() {
-
-
-    const [latest, setLatest] = useState([]);
-
-
-    const fetchData = async () => {
-        const res = await fetch('https://proxies-fawn.vercel.app/anime/animekai/latest-completed');
-        const data = await res.json();
-        setLatest(data.results)
-    }
+    console.log(animData);
+    const recommendations = animData.animData?.recommendations || []; console.log(recommendations);
 
 
-    useEffect(() => {
-        fetchData();
-    }, [])
 
     return (
+
         <>
-            <div className="grid grid-cols-7 gap-10">
-                {latest.slice(0, 7).map((e) => (
+            <div className="grid grid-cols-5 gap-10">
+                {recommendations.map((e) => (
                     <>
                         <div className=" h-75 w-50 cursor-pointer">
                             <img src={e.image} className="object-cover w-full h-full rounded-md"></img>
@@ -44,9 +33,9 @@ function Gridpages() {
                 ))}
             </div>
         </>
-    )
 
+    );
 }
 
 
-export default Gridpages 
+export default Recommendations

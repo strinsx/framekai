@@ -1,7 +1,12 @@
 import Logo from '../assets/logo.png'
+import { useNavigate } from 'react-router-dom';
+
+
 
 
 function Header() {
+
+    const navigate = useNavigate();
 
     return (
         <nav className='flex flex-row w-full h-15'>
@@ -11,7 +16,7 @@ function Header() {
                 </div>
 
                 <div className='flex gap-15 items-center'>
-                    <a href='#' className='a-headers font-heading'>Home</a>
+                    <a href='/' className='a-headers font-heading'>Home</a>
                     <a href='#' className='a-headers font-heading'>Movies</a>
                     <a href='#' className='a-headers font-heading'>Trending</a>
                 </div>

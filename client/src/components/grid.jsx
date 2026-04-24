@@ -43,6 +43,7 @@ function Grid() {
             const url = await fetch(`https://proxies-fawn.vercel.app/anime/animekai/info?id=${getId}`);
             const data = await url.json();
             console.log(data.episodes[0].id);
+            console.log(data);
            const episodeIDs = data.episodes[0].id;
            const isDub = false;
 

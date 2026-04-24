@@ -1,4 +1,5 @@
 import Backdrop from "./components/backdrop";
+import Footer from "./components/footer";
 import Grid from "./components/grid";
 import Header from "./components/header";
 import Movies from "./components/movies";
@@ -12,7 +13,7 @@ import Trending from "./components/trending";
 
 function Homepage() {
     return (
-        <div className="bg-[#0D0D0D] w-full h-[400vh] flex flex-col justify-center items-center">
+        <div className="bg-[#0D0D0D] w-full h-[430vh] flex flex-col justify-center items-center">
             <div className="container w-350 h-full flex flex-col gap-5">
                 <Header></Header>
 
@@ -43,12 +44,14 @@ function Homepage() {
                 </div>
 
 
-                <div className="flex flex-col mt-10">
-                    <h1 className="font-heading text-2xl text-white opacity-90">Movies</h1>
+                <div className="flex flex-col mt-20">
+                    <h1 className="font-heading text-2xl text-white opacity-90 mb-2">Movies</h1>
                     <Movies></Movies>
                 </div>
 
             </div>
+
+            <Footer></Footer>
 
         </div>
     );
