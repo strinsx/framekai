@@ -2,11 +2,14 @@ import { useEffect, useState } from "react";
 import { } from '@fortawesome/free-regular-svg-icons'
 import { faAnglesDown } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useNavigate } from "react-router-dom";
 
 function Trending() {
 
     const [topTrending, setToptrending] = useState([]);
     const [hover, setHover] = useState(null);
+    const navigate = useNavigate();
+
 
 
     const fetchData = async () => {
@@ -14,6 +17,16 @@ function Trending() {
         const data = await res.json();
         console.log(data)
         setToptrending(data.results);
+    }
+
+    const handleURI = (e)=> {
+
+        const id = e.id;
+
+        navigate(`/watch?anim=${encodeURIComponent(id)}&dub=${encodeURIComponent(false)}`)
+
+        window.location.reload();
+
     }
 
 
@@ -33,7 +46,7 @@ function Trending() {
                         <>
                             <div className="bg-transparent w-full h-20 flex items-center justify-around cursor-pointer" onMouseEnter={() => setHover(index)} onMouseLeave={() => setHover(null)}>
                                 <h1 className="text-foreground font-heading text-2xl rounded-full">{index + 1}</h1>
-                                <img src={e.banner} className="bg-amber-500 h-20 w-[85%] object-cover rounded-2xl saturate-10">
+                                <img src={e.banner} onClick={()=> handleURI(e)} className="bg-amber-500 h-20 w-[85%] object-cover rounded-2xl saturate-10">
                                 </img>
 
                                 {hover === index && (

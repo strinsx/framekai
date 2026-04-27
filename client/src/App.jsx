@@ -1,3 +1,4 @@
+import Browser from "./Browse";
 import Homepage from "./Homepage";
 import IFRAME from "./Iframe";
 import Footer from "./components/footer";
@@ -8,6 +9,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Homepage />} />
       <Route path="/watch" element={<IFRAME />}></Route>
+      <Route path="/browser" element={<Browser></Browser>}></Route>
 
 
 

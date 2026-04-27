@@ -1,37 +1,29 @@
-import { use, useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 
+function Search(props = []) {
 
-function Recommendations(animData = []) {
-
-    console.log(animData);
-    const recommendations = animData.animData?.recommendations || []; console.log(recommendations);
-    const [getId, setGetID] = useState('')
+    console.log(props.props);
     const navigate = useNavigate();
 
-    const onGetID = (e) => {
+    
 
-        const id = e.id
-        console.log(id);
+    const handleNavi = (e)=> {
 
-
-        navigate(`/watch?anim=${encodeURIComponent(id)}&dub=${encodeURIComponent(false)}`);
-        window.location.reload();
+        
+        navigate(`/watch?anim=${encodeURIComponent(e)}&dub=${false}`)
 
     }
 
     
-
-
-
+    
     return (
-
         <>
-            <div className="grid grid-cols-5 gap-10">
-                {recommendations.map((e) => (
+            <div className="flex flex-row flex-wrap gap-3 gap-y-20">
+                {props.props.map((e) => (
                     <>
-                        <div className=" h-75 w-50 cursor-pointer " onClick={() => onGetID(e)}>
+                        <div className=" h-75 w-50 cursor-pointer" onClick={()=> handleNavi(e.id)}>
                             <img src={e.image} className="object-cover w-full h-full rounded-md"></img>
                             <h1 className="font-body text-white text-sm text-left opacity-45 line-clamp-1 m-2">{e.title}</h1>
 
@@ -51,9 +43,11 @@ function Recommendations(animData = []) {
                 ))}
             </div>
         </>
+    )
 
-    );
 }
 
 
-export default Recommendations
+export default Search
+
+

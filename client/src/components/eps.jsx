@@ -28,7 +28,7 @@ function Epsdiv({ episodes = [], url }) {
         <>
 
             <div className="w-full h-100 bg-background flex flex-col gap-3">
-                <div className="flex gap-10 p-3 text-foreground font-body">
+                <div className="flex gap-2 p-3 text-foreground font-body">
 
                     {Array.from({length: totalGroups}, (_, i)=> {
                         const start = i * episodePerGroup + 1;

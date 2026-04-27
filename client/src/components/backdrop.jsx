@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -8,6 +9,8 @@ function Backdrop() {
     const [backdrop, setBackdrop] = useState(null);
     const [spotlight, setSpotlight] = useState([]);
     const [watchLater, setWatchLater] = useState([]);
+
+    const navigate = useNavigate();
 
     const fetchData = async () => {
         const response = await fetch('https://framekai.onrender.com/spotlight');
@@ -25,6 +28,16 @@ function Backdrop() {
 
 
         console.log("watch later", JSON.parse(saved));
+    }
+
+    const handleURI = (e)=> {
+
+        const id = e.id
+
+        navigate(`/watch?anim=${encodeURIComponent(id)}&dub=${encodeURIComponent(false)}`)
+
+        window.location.reload();
+
     }
 
     useEffect(() => {
@@ -50,7 +63,7 @@ function Backdrop() {
                         <h1 className="h1-headers font-heading text-2xl max-w-90">{e.title}</h1>
                         <p className="text-white opacity-90 max-w-120 line-clamp-2 text-sm font-body">{e.description}</p>
                         <div className="flex flex-row gap-5">
-                            <button className="bg-[#00FF85] w-25 h-10 rounded-md font-body font-bold cursor-pointer">Play</button>
+                            <button className="bg-[#00FF85] w-25 h-10 rounded-md font-body font-bold cursor-pointer" onClick={()=> handleURI(e)}>Play</button>
                             <button className="bg-transparent w-30 h-10 rounded-md font-body font-bold text-[#00FF85] cursor-pointer border p-1 text-sm"  onClick={()=> watchSubmit(e)} >Watch Later</button>
                         </div>
                     </div>

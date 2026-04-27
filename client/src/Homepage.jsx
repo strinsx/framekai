@@ -44,7 +44,7 @@ function Homepage() {
                 </div>
 
 
-                <div className="flex flex-col mt-20">
+                <div className="flex flex-col mt-40">
                     <h1 className="font-heading text-2xl text-white opacity-90 mb-2">Movies</h1>
                     <Movies></Movies>
                 </div>

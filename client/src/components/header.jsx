@@ -1,5 +1,6 @@
 import Logo from '../assets/logo.png'
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 
 
@@ -7,6 +8,18 @@ import { useNavigate } from 'react-router-dom';
 function Header() {
 
     const navigate = useNavigate();
+    const [query, setQuery] = useState('');
+    const handleSubmit = (e) => {
+
+        e.preventDefault();
+
+
+        if (query === "") {
+            return }
+
+        navigate(`/browser?anim=${encodeURIComponent(query)}&page=${encodeURIComponent(1)}`)
+
+    }
 
     return (
         <nav className='flex flex-row w-full h-15'>
@@ -18,11 +31,12 @@ function Header() {
                 <div className='flex gap-15 items-center'>
                     <a href='/' className='a-headers font-heading'>Home</a>
                     <a href='#' className='a-headers font-heading'>Movies</a>
-                    <a href='#' className='a-headers font-heading'>Trending</a>
+                    <a href='#' className='a-headers font-heading'>Watch Later</a>
                 </div>
 
-                    <input type='text' placeholder='Search' className='bg-[#00FF85] text-black w-70 h-7 p-2 rounded-md placeholder:text-black'></input>
-
+                <form onSubmit={handleSubmit}>
+                    <input type='text' value={query} onChange={(e) => setQuery(e.target.value)} placeholder='Search' className='bg-[#00FF85] text-black w-70 h-7 p-2 rounded-md placeholder:text-black'></input>
+                </form>
 
             </ul>
         </nav>

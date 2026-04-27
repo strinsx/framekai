@@ -67,7 +67,7 @@ function IFRAME() {
 
     return (
         <>
-            <div className="bg-[#0D0D0D] w-full h-[300vh] flex flex-col justify-center items-center">
+            <div className="bg-[#0D0D0D] w-full h-[400vh] flex flex-col justify-center items-center">
                 <div className="container w-350 h-full flex flex-col gap-5">
                     <Header></Header>
 
@@ -78,8 +78,9 @@ function IFRAME() {
                     <Review></Review>
                     <div className="flex flex-row justify-between items-center mt-10 gap-5">
                         <div className="flex flex-col w-full h-full gap-6">
-                            <p className="text-foreground italic">  The server does not allow embedded links in iframes due to DDoS protection. Please click the episodes to watch.
+                            <p className="text-foreground italic">  The server does not allow embedded links in iframes for now due to DDoS protection. Please click the episodes to watch.
                                 . </p>
+                            <iframe src={url} allowFullScreen className="w-full h-150"></iframe>
                             <Epsdiv episodes={animeData.episodes} url={url}></Epsdiv>
                             <div className="flex bg-foreground w-full h-40 flex-col">
                                 <div className="flex bg-background w-full h-10 items-center text-white font-header text-sm p-3">
@@ -144,7 +145,7 @@ function IFRAME() {
 
                         </div>
 
-                        
+
 
 
                         <div className="flex flex-col w-120 ">
@@ -159,7 +160,7 @@ function IFRAME() {
 
                 </div>
 
-                            <Footer></Footer>
+                <Footer></Footer>
 
 
             </div>
