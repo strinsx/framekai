@@ -62,7 +62,7 @@ function IFRAME() {
 
         fetchData();
 
-    }, [])
+    }, [anim])
 
 
     return (
