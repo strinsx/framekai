@@ -17,7 +17,6 @@ function Recommendations(animData = []) {
 
 
         navigate(`/watch?anim=${encodeURIComponent(id)}&dub=${encodeURIComponent(false)}`);
-        window.location.reload();
 
     }
 

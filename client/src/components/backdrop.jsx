@@ -36,7 +36,6 @@ function Backdrop() {
 
         navigate(`/watch?anim=${encodeURIComponent(id)}&dub=${encodeURIComponent(false)}`)
 
-        window.location.reload();
 
     }
 
