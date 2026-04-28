@@ -21,7 +21,7 @@ function IFRAME() {
     const [servers, setServers] = useState([]);
     const [animeData, setanimData] = useState([]);
     const [parsedDATA, setParsed] = useState([]);
-
+    const [currentEpisode, setCurrentEpisode] = useState(1);
     const anim = Searchparams.get('anim');
     const dub = Searchparams.get('dub');
 
@@ -39,16 +39,6 @@ function IFRAME() {
             console.log('helllloo', animeData);
             const episodeID = animData.episodes[0].id;
 
-            const response = await fetch(`https://proxies-fawn.vercel.app/anime/animekai/servers/${episodeID}?${dub}`)
-            const data = await response.json();
-            console.log(data);
-            setServers(data);
-
-            getURL(data[0].url);
-
-
-
-
 
         } catch (error) {
 
@@ -56,6 +46,23 @@ function IFRAME() {
 
         }
     }
+
+    const handleEpisodeChange = async (episodeID, episodeNumber) => {
+        try {
+            const response = await fetch(
+                `https://proxies-fawn.vercel.app/anime/animekai/servers/${episodeID}?${dub}`
+            );
+
+            const data = await response.json();
+
+            setServers(data);
+            getURL(data[0].url);
+            setCurrentEpisode(episodeNumber);
+
+        } catch (error) {
+            console.error(error);
+        }
+    };
 
 
     useEffect(() => {
@@ -81,7 +88,9 @@ function IFRAME() {
                             <p className="text-foreground italic">  The server does not allow embedded links in iframes for now due to DDoS protection. Please click the episodes to watch.
                                 . </p>
                             <iframe src={url} allowFullScreen className="w-full h-150"></iframe>
-                            <Epsdiv episodes={animeData.episodes} url={url}></Epsdiv>
+                            <Epsdiv episodes={animeData.episodes} currentEpisode={currentEpisode}
+                                onEpisodeChange={handleEpisodeChange}
+                            ></Epsdiv>
                             <div className="flex bg-foreground w-full h-40 flex-col">
                                 <div className="flex bg-background w-full h-10 items-center text-white font-header text-sm p-3">
                                     <p>You are watching Episode 1.</p>

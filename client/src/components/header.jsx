@@ -21,6 +21,10 @@ function Header() {
 
     }
 
+    const watchlater = ()=> {
+        navigate('/watchlater');
+    }
+
     return (
         <nav className='flex flex-row w-full h-15'>
             <ul className='flex items-center justify-start w-full p-7 gap-15'>
@@ -30,8 +34,8 @@ function Header() {
 
                 <div className='flex gap-15 items-center'>
                     <a href='/' className='a-headers font-heading'>Home</a>
-                    <a href='#' className='a-headers font-heading'>Movies</a>
-                    <a href='#' className='a-headers font-heading'>Watch Later</a>
+                    <a  className='a-headers font-heading'>Movies</a>
+                    <a  onClick={watchlater} className='a-headers font-heading cursor-pointer'>Watch Later</a>
                 </div>
 
                 <form onSubmit={handleSubmit}>
