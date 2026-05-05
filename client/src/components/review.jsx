@@ -66,15 +66,15 @@ function Review() {
     return (
 
         <>
-            <div className="w-full h-25 bg-[#00FF85] flex items-center p-10 justify-between rounded-sm">
+            <div className="w-full h-25 bg-[#00FF85] flex items-center p-10 justify-between rounded-sm max-sm:w-[30%]">
                 <div>
-                    <h1 className="font-heading text-xl font-semibold">Rate This Site?</h1>
-                    <p className="font-body">Enjoying the site? Give us a quick rating!</p>
+                    <h1 className="font-heading text-xl font-semibold max-sm:text-sm">Rate This Site?</h1>
+                    <p className="font-body max-sm:text-sm">Enjoying the site? Give us a quick rating!</p>
                 </div>
 
                 <div className='flex gap-2 items-center '>
-                    <FontAwesomeIcon icon={hovered || hasSubmit ? solidHeart : regularHeart} onClick={() => submitRatings()} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} className='text-2xl hover:text-red-500 cursor-pointer'></FontAwesomeIcon>
-                    <h1 className='font-heading'>{submit}</h1>
+                    <FontAwesomeIcon icon={hovered || hasSubmit ? solidHeart : regularHeart} onClick={() => submitRatings()} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} className='text-2xl hover:text-red-500 cursor-pointer max-sm:text-sm'></FontAwesomeIcon>
+                    <h1 className='font-heading max-sm:text-sm'>{submit}</h1>
                 </div>
 
             </div>

@@ -76,9 +76,9 @@ function Grid() {
         <>
                 
        
-            <div className=" grid grid-cols-5 w-full h-400"> {newReleases.slice(0, 20).map((e) => (
+            <div className=" grid grid-cols-5 w-full h-400 max-sm:grid-cols-2 max-sm:w-85 max-sm:gap-y-20"> {newReleases.slice(0, 20).map((e) => (
                 <>
-                    <div className=" h-75 w-50 cursor-pointer" onClick={() => setgetId(e.id)}>
+                    <div className=" h-75 w-50 cursor-pointer max-sm:h-60 max-sm:w-40" onClick={() => setgetId(e.id)}>
                         <img src={e.image} className="object-cover w-full h-full rounded-md" ></img>
                         <div className="flex flex-col">
                             <h1 className="font-body text-white text-sm text-left opacity-45 line-clamp-1 m-2">{e.title}</h1>
