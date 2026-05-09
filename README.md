@@ -173,3 +173,5 @@ Books and works that influenced my mindset:
 # ⭐ FrameKai
 
 A project built not only to improve technical skills, but also to document growth as a developer.
+
+https://github.com/strinsx/framekai/blob/main/screenshot.png?raw=true
